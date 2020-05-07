@@ -1,4 +1,8 @@
-# EventExchanger
+# pyEVT: EventExchanger
+
+wrapper for:
+
+https://github.com/markspan/EventExchanger
 
 ## Disclaimer:
 
