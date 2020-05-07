@@ -13,6 +13,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/markspan/pyEVT",
+    download_url = 'https://github.com/markspan/pyEVT/dist/v_01.tar.gz',
     packages=setuptools.find_packages(),
 	include_package_data=True,
 	package_data={"pyEVT": ['EventExchanger.dll', 'HidSharp.dll', 'HidSharp.DeviceHelpers.dll']},	
