@@ -17,8 +17,9 @@ class EvtExchanger:
 	"""
 	desc: |
 	"""
-
-	def __init__(self):
+	EE=None
+	@staticmethod
+	def Initialise():
 
 		directory = os.path.dirname(__file__)
 
@@ -33,13 +34,12 @@ class EvtExchanger:
 			raise Exception('EventExchanger (Lib) Initialisation Error')
 
 		try:
-			self._EventExchanger = EventExchangerLister()
+			EvtExchanger.EE = EventExchangerLister
 			
 		except Exception as e:
 			raise Exception('EventExchanger Device Error')
 		
-
-	def Device(self):
-		return self._EventExchanger
+	@staticmethod
+	def Device():
+		return EvtExchanger.EE
 		
-

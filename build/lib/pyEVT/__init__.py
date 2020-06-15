@@ -1,4 +1,5 @@
-from .evtexchanger import EvtExchanger
-
-_evtLister = EvtExchanger().Device()
-_evtLister.Select("EventExchanger")
+from .EvtExchanger import EvtExchanger
+EvtExchanger.Initialise()
+DeviceSelector=EvtExchanger.Device()
+#_evtLister = EvtExchanger().Device()
+#_evtLister.S
