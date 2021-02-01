@@ -1,2 +1,1 @@
-from .EvtExchanger import EvtExchanger
-EvtExchanger.Initialise()
+from .evtexchanger import EvtExchanger
