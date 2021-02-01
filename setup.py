@@ -6,19 +6,19 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyEVT", 
-    version="0.99.14",
+    version="0.99.20",
     author="Eise Hoekstra and Mark Span (primary developer)",
     author_email="m.m.span@rug.nl",
     description="Package to communicate with RUG developed hardware",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/markspan/pyEVT",
-    download_url = 'https://github.com/markspan/pyEVT/dist/pyEVT-0.99.14.tar.gz',
+    download_url = 'https://github.com/markspan/pyEVT/dist/pyEVT-0.99.20.tar.gz',
     packages=setuptools.find_packages(),
 	include_package_data=True,
-	package_data={"pyEVT": ['EventExchanger.dll', 'HidSharp.dll']},	
+
 	install_requires=[
-          'pythonnet',
+          'hidapi',
       ],
     classifiers=[
         "Programming Language :: Python :: 3",

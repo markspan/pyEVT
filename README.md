@@ -13,7 +13,6 @@ Code Written by Eise Hoekstra and Mark M. Span, Maintained by Mark M. Span
 
 ## Usage:
 
-Any environment that can read and use .net code will be able to use this library.
+Rewrite from 0.99.14: pure python implementation using HIDAPI
 
-e.g., Matlab and Python.
-
+https://pypi.org/project/hidapi/
