@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: pyEVT
-Version: 0.99.21
+Version: 0.99.22
 Summary: Package to communicate with RUG developed hardware
 Home-page: https://github.com/markspan/pyEVT
 Author: Eise Hoekstra and Mark Span (primary developer)
 Author-email: m.m.span@rug.nl
 License: UNKNOWN
-Download-URL: https://github.com/markspan/pyEVT/dist/pyEVT-0.99.21.tar.gz
+Download-URL: https://github.com/markspan/pyEVT/dist/pyEVT-0.99.22.tar.gz
 Description: # pyEVT: EventExchanger
         
         wrapper for:

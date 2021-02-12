@@ -40,7 +40,7 @@ class EvtExchanger:
             if matchingkey in longname:
                 if EvtExchanger.ListOfDevices == []:
                     EvtExchanger.SelectedDevice.open_path(d['path'])
-                    EvtExchanger.SelectedDevice.set_nonblocking(1)
+                    EvtExchanger.SelectedDevice.set_nonblocking(True)
                 EvtExchanger.ListOfDevices.append(longname)
         return EvtExchanger.ListOfDevices
 
@@ -53,24 +53,34 @@ class EvtExchanger:
     @staticmethod
     def WaitForDigEvents(AllowedEventLines, TimeoutMSecs):
         # flush the buffer!
-        while (EvtExchanger.SelectedDevice.read(255) != []):
+        while (EvtExchanger.SelectedDevice.read(1) != []):
             continue
+        TimeoutSecs = TimeoutMSecs / 1000
         startTime = time.time()        
         while 1:
-            ElapsedMs = (time.time()-startTime) * 1000
-            lastbtn = EvtExchanger.SelectedDevice.read(AllowedEventLines)
+            ElapsedSecs = (time.time()-startTime)
+            lastbtn = EvtExchanger.SelectedDevice.read(1)           
             if (lastbtn != []):
                 if (lastbtn[0] & AllowedEventLines > 0):
                     break
             # break for timeout:
             if (TimeoutMSecs != -1):
-                if (ElapsedMs >= (TimeoutMSecs)):
+                if (ElapsedSecs >= (TimeoutSecs)):
                     lastbtn = [-1]
-                    ElapsedMs = TimeoutMSecs
+                    ElapsedSecs = TimeoutSecs
                     break
-        return lastbtn[0],round(ElapsedMs)
+        return lastbtn[0],round(ElapsedSecs/1000)
         
-    
+    def GetAxis():
+        while (EvtExchanger.SelectedDevice.read(1) != []):
+            pass
+        time.sleep(.01)
+        valueList = EvtExchanger.SelectedDevice.read(3)   
+        if (valueList == []):
+            return EvtExchanger.__AxisValue
+        EvtExchanger.__AxisValue = valueList[1] + (256*valueList[2])
+        
+        return EvtExchanger.__AxisValue  
     '''
         Functions that only require a single USB command to be sent to the device.
     '''
@@ -89,10 +99,12 @@ class EvtExchanger:
 
     @staticmethod
     def RENC_SetUp(Range, MinimumValue, Position, InputChange, PulseInputDivider):
+        EvtExchanger.__AxisValue = Position
         EvtExchanger.SelectedDevice.write([ 0, EvtExchanger.__SETUPROTARYCONTROLLER, Range & 255, Range >> 8, MinimumValue & 255 , MinimumValue >> 8, Position & 255, Position >> 8, InputChange, PulseInputDivider, 0])
     
     @staticmethod
     def RENC_SetPosition(Position):
+        EvtExchanger.__AxisValue = Position
         EvtExchanger.SelectedDevice.write([ 0, EvtExchanger.__SETROTARYCONTROLLERPOSITION, Position & 255, Position >> 8, 0, 0, 0, 0, 0, 0, 0])
         
     @staticmethod
@@ -103,6 +115,8 @@ class EvtExchanger:
     def SendColors(NumberOfLeds,Mode):
         EvtExchanger.SelectedDevice.write([ 0, EvtExchanger.__SENDLEDCOLORS, NumberOfLeds, Mode, 0, 0, 0, 0, 0, 0, 0 ])
    
+    __AxisValue = 0
+    
     # CONSTANTS:
     __CLEAROUTPUTPORT = 0# 0x00
     __SETOUTPUTPORT = 1   # 0x01
