@@ -55,8 +55,10 @@ class EvtExchanger:
         # flush the buffer!
         while (EvtExchanger.SelectedDevice.read(1) != []):
             continue
+            
         TimeoutSecs = TimeoutMSecs / 1000
         startTime = time.time()        
+        
         while 1:
             ElapsedSecs = (time.time()-startTime)
             lastbtn = EvtExchanger.SelectedDevice.read(1)           
@@ -69,7 +71,7 @@ class EvtExchanger:
                     lastbtn = [-1]
                     ElapsedSecs = TimeoutSecs
                     break
-        return lastbtn[0],round(ElapsedSecs/1000)
+        return lastbtn[0], round(1000.0 * ElapsedSecs)
         
     def GetAxis():
         while (EvtExchanger.SelectedDevice.read(1) != []):

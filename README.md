@@ -1,12 +1,9 @@
 # pyEVT: EventExchanger
 
-wrapper for:
-
-https://github.com/markspan/EventExchanger
 
 ## Disclaimer:
 
-C-Sharp code to communicate with the hardware the University of Groningen,
+Code to communicate with the hardware the University of Groningen,
 faculty of Behaviour and Social Sciences, department of Research Support developed.
 
 Code Written by Eise Hoekstra and Mark M. Span, Maintained by Mark M. Span
