@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyEVT", 
-    version="0.99.24",
+    version="0.99.25",
     author="Eise Hoekstra and Mark Span (primary developer)",
     author_email="m.m.span@rug.nl",
     description="Package to communicate with RUG developed hardware",
