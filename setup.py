@@ -6,14 +6,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyEVT", 
-    version="0.99.30",
+    version="0.99.31",
     author="Eise Hoekstra and Mark Span (primary developer)",
     author_email="m.m.span@rug.nl",
     description="Package to communicate with RUG developed hardware",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/markspan/pyEVT",
-    download_url = 'https://github.com/markspan/pyEVT/dist/pyEVT-0.99.30.tar.gz',
+    download_url = 'https://github.com/markspan/pyEVT/dist/pyEVT-0.99.31.tar.gz',
     packages=setuptools.find_packages(),
 	include_package_data=True,
 
