@@ -69,7 +69,7 @@ class EvtExchanger:
 					break
 			# break for timeout:
 			if (TimeoutMSecs != -1):
-				if (ElapsedSecs >= (TimeoutSecs)):
+				if (ElapsedSecs >= TimeoutSecs):
 					lastbtn = [-1]
 					ElapsedSecs = TimeoutSecs
 					break
