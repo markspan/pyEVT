@@ -46,6 +46,7 @@ class EvtExchanger:
 	def Select(self, deviceName):
 		self.Attached(deviceName)
 		if type(self.Path) == bytes:
+			self.SelectedDevice.close()
 			self.SelectedDevice.open_path(self.Path)
 			self.SelectedDevice.set_nonblocking(True)
 		else:
@@ -69,7 +70,7 @@ class EvtExchanger:
 					break
 			# break for timeout:
 			if (TimeoutMSecs != -1):
-				if (ElapsedSecs >= TimeoutSecs):
+				if (ElapsedSecs >= (TimeoutSecs)):
 					lastbtn = [-1]
 					ElapsedSecs = TimeoutSecs
 					break
